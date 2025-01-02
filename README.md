@@ -39,10 +39,10 @@ In order to deploy to multiple environments, some configuration options in `docu
 CADENCE_DOCS_URL=https://cadenceworkflow.io
 
 # For GitHub pages deployment, it is often /<projectName>/ defaults to `/`
-CADENCE_DOCS_BASE_URL=/cadence-docs/
+BASE_URL=/cadence-docs/
 
 # For Github pages only, this is your Github org/user name.
-CADENCE_DOCS_ORGANIZATION=cadence-workflow
+ORGANIZATION_NAME=cadence-workflow
 ```
 
 ### Deployment

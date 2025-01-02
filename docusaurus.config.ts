@@ -25,12 +25,14 @@ const config: Config = {
 
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: envReplace('${CADENCE_DOCS_BASE_URL:-/Cadence-Docs/}', process.env),
+  baseUrl: envReplace('${BASE_URL:-/}', process.env),
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: envReplace('${CADENCE_DOCS_ORGANIZATION:-cadence-workflow}', process.env),
-  projectName: 'cadence-docs', // Usually your repo name.
+  organizationName: envReplace('${ORGANIZATION_NAME:-cadence-workflow}', process.env),
+
+  // Usually your repo name.
+  projectName: envReplace('${PROJECT_NAME:-Cadence-Docs}', process.env),
 
   trailingSlash: false,
 
