@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcadence=self.webpackChunkcadence||[]).push([[1903],{1912:e=>{e.exports=JSON.parse('{"blogBasePath":"/ibarrajo/cadence-docs/blog","blogTitle":"Cadence Blog","authorsListPath":"/ibarrajo/cadence-docs/blog/authors"}')}}]);
