@@ -17,20 +17,35 @@ jobs:
     # https://github.com/cadence-workflow/Cadence-Docs/settings/environments
     environment: production
     env:
-      CADENCE_DOCS_URL: ${{ vars.CADENCE_DOCS_URL || 'https://cadenceworkflow.io' }}
-      BASE_URL: ${{ vars.BASE_URL || '/Cadence-Docs/' }}
-      ORGANIZATION_NAME: ${{ vars.ORGANIZATION_NAME || 'cadence-workflow' }}
+      CADENCE_DOCS_URL: ${{ vars.CADENCE_DOCS_URL }}
+      BASE_URL: ${{ vars.BASE_URL }}
+      ORGANIZATION_NAME: ${{ vars.ORGANIZATION_NAME }}
 
     steps:
-      - name: Split branch name
+      - name: Set environment variables
         env:
-          PROJECT_NAME: ${{ github.repository }}
+          REPO_NAME: ${{ github.repository }}
         id: split
-        run: echo "fragment=${PROJECT_NAME##*/}" >> $GITHUB_OUTPUT
+        run: |
+          if [[ -z "${PROJECT_NAME}" ]]; then
+            echo "PROJECT_NAME not provided, using last part of repository name"
+            echo "PROJECT_NAME=${REPO_NAME##*/}" >> $GITHUB_ENV
+          fi
+          if [[ -z "${BASE_URL}" ]]; then
+            echo "BASE_URL not provided, using repo name for gh-pages"
+            echo "BASE_URL=/${REPO_NAME##*/}/" >> $GITHUB_ENV
+          fi
+          if [[ -z "${ORGANIZATION_NAME}" ]]; then
+            echo "ORGANIZATION_NAME not provided, using the first part of the repository name"
+            echo "ORGANIZATION_NAME=${REPO_NAME/\/*/}" >> $GITHUB_ENV
+          fi
+
       - name: Test variable
         run: |
-          echo ${{ steps.split.outputs.fragment }}
-          echo $PROJECT_NAME
+          echo "CADENCE_DOCS_URL is ${CADENCE_DOCS_URL}"
+          echo "PROJECT_NAME is ${PROJECT_NAME}"
+          echo "BASE_URL is ${BASE_URL}"
+          echo "ORGANIZATION_NAME is ${ORGANIZATION_NAME}"
 
       # same as build.yml
       - name: Checkout 🛎️
@@ -39,6 +54,7 @@ jobs:
           persist-credentials: false
 
       # configure custom domain for github pages
+      # files placed under static folder will be copied to the root of the build folder
       - name: Configure domain
         uses: finnp/create-file-action@1.0.0
         env:
