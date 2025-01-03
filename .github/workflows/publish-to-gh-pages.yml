@@ -59,7 +59,7 @@ jobs:
         uses: finnp/create-file-action@1.0.0
         env:
           FILE_NAME: "static/CNAME"
-          FILE_DATA: ${{ secrets.CUSTOM_DOMAIN || 'cadenceworkflow.io' }}
+          FILE_DATA: ${{ secrets.CUSTOM_DOMAIN }}
 
       - name: Use Node.js lts/hydrogen (v18)
         uses: actions/setup-node@v4
@@ -73,9 +73,9 @@ jobs:
           npm install
           npm run build
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: build # The folder the action should deploy.
-          clean: true # Automatically remove deleted files from the deploy branch
+      # - name: Deploy 🚀
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     branch: gh-pages # The branch the action should deploy to.
+      #     folder: build # The folder the action should deploy.
+      #     clean: true # Automatically remove deleted files from the deploy branch
