@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcadence=self.webpackChunkcadence||[]).push([[7659],{9055:e=>{e.exports=JSON.parse('{"tags":[{"label":"announcement","permalink":"/cadence-docs/community/tags/announcement","count":2}]}')}}]);
