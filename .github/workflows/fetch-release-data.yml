@@ -1,0 +1,30 @@
+name: Fetch release data
+on:
+  schedule:
+    # Run every 8 hours
+    - cron: '0 */8 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch-release-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts
+            static/data/releases
+      - run: |
+            ./scripts/fetch-releases.sh
+            if git diff --quiet static/data/releases; then
+              echo "No changes to commit"
+              exit 0
+            fi
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add static/data/releases
+            git commit -m "Update release data"
+            git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
