@@ -62,6 +62,11 @@ $ GIT_USER=<Your GitHub username> npm run deploy
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
 
 
+### Updating Release Data
+
+The release pages rely on data from GitHub that is persisted as json files under `static/data/releases/`.
+In order to update the release information for display, this can be done manually or be set up as part of the CI/CD process by running the `scripts/fetch-releases.sh` script. Script uses the [GitHub CLI](https://cli.github.com/) to fetch the release data.
+
 # NPM Registry
 
 Ensure you have a `.npmrc` [file](https://docs.npmjs.com/cli/v9/configuring-npm/npmrc/) configured with `registry=https://registry.npmjs.org/`.

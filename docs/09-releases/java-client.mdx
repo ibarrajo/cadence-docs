@@ -1,0 +1,27 @@
+---
+layout: default
+title: Cadence Java Client Releases
+description: Release Notes
+permalink: /docs/releases/java-client
+---
+
+# Cadence Java Client
+
+import {ListReleases, getReleaseData, getLatestRelease} from  '@site/src/components/CadenceReleases';
+export const releases = getReleaseData('cadence-java-client.json');
+export const latestRelease = getLatestRelease(releases);
+
+
+Cadence follows [semantic versioning](https://semver.org/spec/v2.0.0.html) and you can find more information about changes between version on the Cadence [changelog](https://github.com/cadence-workflow/cadence/blob/master/CHANGELOG.md).
+
+:::tip[Latest release for General Availability]
+
+<a href={latestRelease.html_url} target="_blank">{latestRelease.name} ({latestRelease.tag_name})</a> published on {latestRelease.published_at_date}
+
+:::
+
+<ListReleases releases={releases}></ListReleases>
+
+---
+
+For a comprehensive list of changes and detailed release notes, please visit the [Cadence GitHub Releases page](https://github.com/cadence-workflow/cadence/releases).
