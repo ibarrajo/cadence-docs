@@ -22,7 +22,10 @@ export function getReleaseData(source) {
 }
 
 export function getLatestRelease(releases) {
-  return releases[0];
+  return _.find(
+    releases,
+    (release) => release.prerelease === false && release.draft === false
+  );
 }
 
 const getMajorReleases = (releases) => {
@@ -65,9 +68,7 @@ function Releases({ releases }): JSX.Element {
         {release.published_at_string}
       </Heading>
 
-      <Markdown remarkPlugins={[remarkGfm]}>
-        {release.body}
-      </Markdown>
+      <Markdown remarkPlugins={[remarkGfm]}>{release.body}</Markdown>
 
       <br></br>
     </div>
