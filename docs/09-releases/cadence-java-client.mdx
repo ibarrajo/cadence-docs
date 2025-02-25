@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Cadence Go Client Releases
+title: Cadence Java Client Releases
 description: Release Notes
-permalink: /docs/releases/go-client
+permalink: /docs/releases/cadence-java-client
 ---
 
-# Cadence Go Client
+# Cadence Java Client
 
 import {ListReleases, getReleaseData, getLatestRelease} from  '@site/src/components/CadenceReleases';
-export const releases = getReleaseData('cadence-go-client.json');
+export const releases = getReleaseData('cadence-java-client.json');
 export const latestRelease = getLatestRelease(releases);
 
 
@@ -20,9 +20,20 @@ Cadence follows [semantic versioning](https://semver.org/spec/v2.0.0.html) and y
 
 :::
 
+:::info[Java Compatibility]
+
+Java versions 21, 17 and 11 are supported at this time.
+
+Due to backward compatibility, Java versions 17+ require the following JVM flag
+```
+--add-opens java.base/java.lang=ALL-UNNAMED
+```
+
+:::
+
 ## Major Releases
 <ListReleases releases={releases}></ListReleases>
 
 ---
 
-For a comprehensive list of changes and detailed release notes, please visit the [Cadence Go Client GitHub Releases page](https://github.com/cadence-workflow/cadence-go-client/releases).
+For a comprehensive list of changes and detailed release notes, please visit the [Cadence Java Client GitHub Releases page](https://github.com/cadence-workflow/cadence-java-client/releases).

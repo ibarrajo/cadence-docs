@@ -148,8 +148,8 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       items: [
         { type: 'doc', 'id': 'releases/cadence', label: 'Cadence Service' },
-        { type: 'doc', 'id': 'releases/go-client', label: 'Cadence Go Client' },
-        { type: 'doc', 'id': 'releases/java-client', label: 'Cadence Java Client' },
+        { type: 'doc', 'id': 'releases/cadence-go-client', label: 'Cadence Go Client' },
+        { type: 'doc', 'id': 'releases/cadence-java-client', label: 'Cadence Java Client' },
       ],
     },
     {
