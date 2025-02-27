@@ -42,37 +42,24 @@ on any host, the second and third must run on the same host as the first one. Th
 
 ## Differences between Java and Golang Clients
 
-While many features are already supported in the Cadence Golang client, some features are still missing in the Java client. The Cadence development team aims for feature parity between the two clients, with new features typically being implemented in Golang first.
+While many features are already supported in the Cadence Golang client, some features are missing in the Java client. The Cadence development team aims for feature parity between the two clients, with new features typically being implemented in cadence-go-client first.
 
 ### Feature Comparison
 
-| Feature                                                   | Go Client      | Java Client   | Priority |
-|-----------------------------------------------------------|----------------|---------------|----------|
-| **Shadow tests**                                           | Supported      | No            | P0       |
-| **Async APIs**                                             | Supported      | Supported     | P0       |
-| **Up to Date Samples**                                    | Supported      | No            | P0       |
-| **SonarQube integration for Java client library**         | Supported      | No            | P0       |
-| **Client emitted metrics**                                | Supported      | No            | P0       |
-| **Same request ID for retries**                           | Supported      | No            | P0       |
-| **Cadence canary alerting**                               | Supported      | No            | P0       |
-| **Context propagator**                                    | Supported      | No            | P1       |
-| **Customer provided context propagator**                  | Supported      | No            | P1       |
+| Feature                                                    | Go Client      | Java Client   | Priority |
+|------------------------------------------------------------|----------------|---------------|----------|
+| **Up to Date Samples**                                     | Supported      | No            | P0       |
+| **Customer provided context propagator**                   | Supported      | No            | P1       |
 | **Poller autoscale**                                       | Supported      | No            | P2       |
 | **Auto heartbeat**                                         | Supported      | No            | -        |
 | **Jitter start**                                           | Supported      | No            | -        |
-| **Migrate from tchannel to gRPC**                         | Supported      | No            | P2       |
 | **Missing methods**                                        | Supported      | No            | P2       |
-| **Sessions (sticky activity workers)**                    | Supported      | No            | P4       |
-| **List all queries supported for a given workflow**       | Supported      | No            | P2       |
+| **Sessions (sticky activity workers)**                     | Supported      | No            | P4       |
+| **List all queries supported for a given workflow**        | Supported      | No            | P2       |
 
-### Notes:
+### Notes
 
 1. **P0 (Critical)**: These features are crucial for the Java client and should be prioritized.
 2. **P1 (High)**: These features are important for enhancing the Java client.
 3. **P2 (Medium)**: Features that would improve the experience but are not critical.
 4. **P4 (Low)**: These features have lower priority for now.
-
-### Additional Notes:
-- The Java client lacks several advanced features, such as shadow tests and client-emitted metrics, which are currently only supported in the Go client.
-- Some features, like "Async APIs" are already supported in the Java client.
-- Sessions (sticky activity workers) is currently deprioritized
