@@ -46,20 +46,16 @@ While many features are already supported in the Cadence Golang client, some fea
 
 ### Feature Comparison
 
-| Feature                                                    | Go Client      | Java Client   | Priority |
-|------------------------------------------------------------|----------------|---------------|----------|
-| **Up to Date Samples**                                     | Supported      | No            | P0       |
-| **Customer provided context propagator**                   | Supported      | No            | P1       |
-| **Poller autoscale**                                       | Supported      | No            | P2       |
-| **Auto heartbeat**                                         | Supported      | No            | -        |
-| **Jitter start**                                           | Supported      | No            | -        |
-| **Missing methods**                                        | Supported      | No            | P2       |
-| **Sessions (sticky activity workers)**                     | Supported      | No            | P4       |
-| **List all queries supported for a given workflow**        | Supported      | No            | P2       |
+| Feature                                                | Go Client | Java Client | Issue |
+|--------------------------------------------------------|-----------|-------------|-------|
+| **Up to Date Samples**                                 | Supported | No          | [Link](https://github.com/cadence-workflow/cadence-java-samples/issues) |
+| **Customer provided context propagator**               | Supported | No          |       |
+| **Poller autoscale**                                   | Supported | No          |       |
+| **Auto heartbeat[^auto-heartbeat]**                    | Supported | No          |       |
+| **Jitter start**                                       | Supported | No          |       |
+| **Sessions (sticky activity workers)[^sticky]**        | Supported | No          |       |
+| **List all queries supported for a given workflow**    | Supported | No          |       |
 
-### Notes
 
-1. **P0 (Critical)**: These features are crucial for the Java client and should be prioritized.
-2. **P1 (High)**: These features are important for enhancing the Java client.
-3. **P2 (Medium)**: Features that would improve the experience but are not critical.
-4. **P4 (Low)**: These features have lower priority for now.
+[^auto-heartbeat]: heartbeating in java is simple to implement and might be better for end user to determine which type of heart beating is better for the use case rather than add a generic auto-heartbeat mechanism to the client.
+[^sticky]: feature needs more traction in order to prioritize
