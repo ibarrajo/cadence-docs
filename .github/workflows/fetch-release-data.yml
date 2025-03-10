@@ -15,6 +15,11 @@ jobs:
   fetch-release-data:
     runs-on: ubuntu-latest
     steps:
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Try checkout ${{ env.BRANCH }}
         uses: actions/checkout@v4
         id: try-checkout
@@ -49,13 +54,11 @@ jobs:
             fi
 
             # commit and push changes
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
             git add static/data/releases
             git commit -m "Update release data"
             git push origin $BRANCH
 
-      - name: Open a PR if one does not exist
+      - name: Open a PR if needed
         if: ${{ steps.fetch-release-data.outputs.skip_pr != 'true' }}
         run: |
             prs=$(gh pr list \
