@@ -15,12 +15,12 @@ jobs:
   fetch-release-data:
     runs-on: ubuntu-latest
     steps:
-      - name: Try checkout $BRANCH
+      - name: Try checkout ${{ env.BRANCH }}
         uses: actions/checkout@v4
         id: try-checkout
         continue-on-error: true
         with:
-          ref: $BRANCH
+          ref: ${{ env.BRANCH }}
           sparse-checkout: |
             scripts
             static/data/releases
