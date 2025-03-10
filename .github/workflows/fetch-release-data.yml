@@ -21,17 +21,10 @@ jobs:
         continue-on-error: true
         with:
           ref: ${{ env.BRANCH }}
-          sparse-checkout: |
-            scripts
-            static/data/releases
 
       - name: Fallback to default branch if checkout failed
         if: steps.try-checkout.outcome == 'failure'
         uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            scripts
-            static/data/releases
 
       - name: Ensure branch exists or create it
         run: |
