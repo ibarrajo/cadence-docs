@@ -15,11 +15,6 @@ jobs:
   fetch-release-data:
     runs-on: ubuntu-latest
     steps:
-      - name: Configure git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Try checkout ${{ env.BRANCH }}
         uses: actions/checkout@v4
         id: try-checkout
@@ -30,6 +25,11 @@ jobs:
       - name: Fallback to default branch if checkout failed
         if: steps.try-checkout.outcome == 'failure'
         uses: actions/checkout@v4
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Ensure branch exists or create it
         run: |
