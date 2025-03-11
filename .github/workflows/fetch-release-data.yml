@@ -54,20 +54,17 @@ jobs:
               exit 0
             fi
 
+            job_url=$(gh run --repo ${{ github.repository }} view ${{ github.run_id }} --json jobs --jq '.jobs[] | select(.name == "${{ github.job }}") | .url')
+
             # commit and push changes
             git add static/data/releases
-            git commit -m "Update release data"
+            git commit -m "Update release data" -m "Job: $job_url"
             git push origin $BRANCH
 
       - name: Open a PR if needed
         if: ${{ steps.fetch-release-data.outputs.skip_pr != 'true' }}
         run: |
-            prs=$(gh pr list \
-                --repo "$GITHUB_REPOSITORY" \
-                --head "$BRANCH" \
-                --base 'master' \
-                --json title \
-                --jq 'length')
+            prs=$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$BRANCH" --base 'master' --json title --jq 'length')
             if ((prs == 0)); then
-              gh pr create -B master -H $BRANCH --title 'Update Cadence Release Data' --body 'Created by Github action'
+              gh pr create -B master -H $BRANCH --title 'Update Cadence Release Data' --body "Created by Github action"
             fi
